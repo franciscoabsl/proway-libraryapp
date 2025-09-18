@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+database:
+  url: jdbc:h2:./data/catalogdb
+  username: sa
+  password:
+  driver-class-name: org.h2.Driver
+
+notification:
+  url: http://localhost:8081/notify
+
+logging:
+  file: catalog.log

@@ -1,0 +1,12 @@
+server:
+  port: 8081
+
+smtp:
+  host: localhost
+  port: 1025
+  username: ""
+  password: ""
+  from: "no-reply@livraria.com"
+
+logging:
+  file: notification.log
