@@ -1,4 +1,7 @@
 package com.franciscoabsl.notification.port.in;
 
-public class NotificationUseCasePortIn {
+import com.franciscoabsl.notification.domain.EmailMessage;
+
+public interface NotificationUseCasePortIn {
+    boolean execute(EmailMessage message);
 }

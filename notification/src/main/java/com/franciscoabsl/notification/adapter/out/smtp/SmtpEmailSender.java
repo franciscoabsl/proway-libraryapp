@@ -1,12 +1,13 @@
 package com.franciscoabsl.notification.adapter.out.smtp;
 import com.franciscoabsl.notification.domain.EmailMessage;
+import com.franciscoabsl.notification.port.out.EmailSenderPortOut;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
-public class SmtpEmailSender {
+public class SmtpEmailSender implements EmailSenderPortOut {
 
     private final String host;
     private final int port;

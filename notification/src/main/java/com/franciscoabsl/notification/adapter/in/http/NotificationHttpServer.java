@@ -3,6 +3,7 @@ package com.franciscoabsl.notification.adapter.in.http;
 import com.franciscoabsl.notification.application.usecases.SendNotificationUseCase;
 import com.franciscoabsl.notification.domain.EmailMessage;
 
+import com.franciscoabsl.notification.port.in.NotificationUseCasePortIn;
 import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.HttpExchange;
 import java.io.OutputStream;
@@ -14,16 +15,16 @@ import com.google.gson.Gson;
 
 public class NotificationHttpServer {
 
-    private final SendNotificationUseCase sendNotificationUseCase;
+    private final NotificationUseCasePortIn sendNotificationUseCase;
     private final Gson gson = new Gson();
     private HttpServer httpServer;
 
-    public NotificationHttpServer(SendNotificationUseCase useCase) {
+    public NotificationHttpServer(NotificationUseCasePortIn useCase) {
         this.sendNotificationUseCase = useCase;
     }
 
     public void start(int port) throws Exception {
-        httpServer = HttpServer.create(new InetSocketAddress(port), 0); // <-- usa o atributo
+        httpServer = HttpServer.create(new InetSocketAddress(port), 0);
         httpServer.createContext("/notify", this::handleNotify);
         httpServer.setExecutor(null);
         httpServer.start();
@@ -32,7 +33,7 @@ public class NotificationHttpServer {
 
     public void stop() {
         if (httpServer != null) {
-            httpServer.stop(0); // 0 significa parar imediatamente
+            httpServer.stop(0);
             System.out.println("Servidor HTTP parado, porta liberada.");
         }
     }
@@ -40,7 +41,7 @@ public class NotificationHttpServer {
     private void handleNotify(HttpExchange exchange) {
         try {
             if (!"POST".equals(exchange.getRequestMethod())) {
-                exchange.sendResponseHeaders(405, -1); // Method Not Allowed
+                exchange.sendResponseHeaders(405, -1);
                 return;
             }
 

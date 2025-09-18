@@ -1,4 +1,7 @@
 package com.franciscoabsl.notification.port.out;
 
-public class EmailSenderPortOut {
+import com.franciscoabsl.notification.domain.EmailMessage;
+
+public interface EmailSenderPortOut {
+    boolean sendEmail(EmailMessage message);
 }
