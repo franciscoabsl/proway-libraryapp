@@ -8,9 +8,9 @@ import java.util.UUID;
 
 public interface BookUseCasePortIn {
 
-    Livro cadastrarLivro(String titulo, String autor, int anoPublicacao);
+    Livro cadastrar(String titulo, String autor, int anoPublicacao);
 
-    Optional<Livro> buscarLivroPorId(UUID id);
+    Optional<Livro> buscarPorId(UUID id);
 
     List<Livro> listarTodos();
 }

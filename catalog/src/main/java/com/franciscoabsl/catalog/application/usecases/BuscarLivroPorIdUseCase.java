@@ -1,12 +1,13 @@
 package com.franciscoabsl.catalog.application.usecases;
 
 import com.franciscoabsl.catalog.domain.Livro;
+import com.franciscoabsl.catalog.port.in.BuscarLivroPorIdPortIn;
 import com.franciscoabsl.catalog.port.out.BookRepository;
 
 import java.util.Optional;
 import java.util.UUID;
 
-public class BuscarLivroPorIdUseCase {
+public class BuscarLivroPorIdUseCase implements BuscarLivroPorIdPortIn {
 
     private final BookRepository bookRepository;
 

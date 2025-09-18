@@ -1,9 +1,9 @@
 package com.franciscoabsl.catalog.adapter.in;
 
-import com.franciscoabsl.catalog.application.usecases.CadastrarLivroUseCase;
-import com.franciscoabsl.catalog.application.usecases.BuscarLivroPorIdUseCase;
-import com.franciscoabsl.catalog.application.usecases.ListarLivrosUseCase;
 import com.franciscoabsl.catalog.domain.Livro;
+import com.franciscoabsl.catalog.port.in.BuscarLivroPorIdPortIn;
+import com.franciscoabsl.catalog.port.in.CadastrarLivroPortIn;
+import com.franciscoabsl.catalog.port.in.ListarLivrosPortIn;
 
 import java.util.Optional;
 import java.util.Scanner;
@@ -11,16 +11,16 @@ import java.util.UUID;
 
 public class CatalogCLI {
 
-    private final CadastrarLivroUseCase cadastrarLivroUseCase;
-    private final BuscarLivroPorIdUseCase buscarLivroPorIdUseCase;
-    private final ListarLivrosUseCase listarLivrosUseCase;
+    private final CadastrarLivroPortIn cadastrarLivroPortIn;
+    private final BuscarLivroPorIdPortIn buscarLivroPorIdPortIn;
+    private final ListarLivrosPortIn listarLivrosPortIn;
 
-    public CatalogCLI(CadastrarLivroUseCase cadastrar,
-                      BuscarLivroPorIdUseCase buscar,
-                      ListarLivrosUseCase listar) {
-        this.cadastrarLivroUseCase = cadastrar;
-        this.buscarLivroPorIdUseCase = buscar;
-        this.listarLivrosUseCase = listar;
+    public CatalogCLI(CadastrarLivroPortIn cadastrar,
+                      BuscarLivroPorIdPortIn buscar,
+                      ListarLivrosPortIn listar) {
+        this.cadastrarLivroPortIn = cadastrar;
+        this.buscarLivroPorIdPortIn = buscar;
+        this.listarLivrosPortIn = listar;
     }
 
     public void start() {
@@ -63,7 +63,7 @@ public class CatalogCLI {
         System.out.print("Ano de publicação: ");
         int ano = Integer.parseInt(scanner.nextLine());
 
-        Livro livro = cadastrarLivroUseCase.execute(titulo, autor, ano);
+        Livro livro = cadastrarLivroPortIn.execute(titulo, autor, ano);
         System.out.println("Livro cadastrado: \n" + livro);
     }
 
@@ -72,7 +72,7 @@ public class CatalogCLI {
         String idStr = scanner.nextLine();
         try {
             UUID id = UUID.fromString(idStr);
-            Optional<Livro> livro = buscarLivroPorIdUseCase.execute(id);
+            Optional<Livro> livro = buscarLivroPorIdPortIn.execute(id);
             livro.ifPresentOrElse(
                     l -> {
                         System.out.println("Livro encontrado: " + l);
@@ -87,6 +87,6 @@ public class CatalogCLI {
     }
 
     private void listar() {
-        listarLivrosUseCase.execute();
+        listarLivrosPortIn.execute();
     }
 }

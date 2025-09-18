@@ -8,14 +8,11 @@ import com.franciscoabsl.catalog.application.usecases.CadastrarLivroUseCase;
 import com.franciscoabsl.catalog.application.usecases.BuscarLivroPorIdUseCase;
 import com.franciscoabsl.catalog.application.usecases.ListarLivrosUseCase;
 
-import com.franciscoabsl.catalog.domain.Livro;
-import com.franciscoabsl.catalog.port.in.BookUseCasePortIn;
 import com.franciscoabsl.catalog.port.out.BookRepository;
 import com.franciscoabsl.catalog.port.out.LoggerPort;
 import com.franciscoabsl.catalog.port.out.NotificationService;
 import org.yaml.snakeyaml.Yaml;
 
-import java.io.FileWriter;
 import java.io.InputStream;
 import java.util.Map;
 

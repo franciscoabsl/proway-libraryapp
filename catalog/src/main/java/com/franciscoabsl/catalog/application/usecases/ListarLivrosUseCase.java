@@ -1,11 +1,12 @@
 package com.franciscoabsl.catalog.application.usecases;
 
 import com.franciscoabsl.catalog.domain.Livro;
+import com.franciscoabsl.catalog.port.in.ListarLivrosPortIn;
 import com.franciscoabsl.catalog.port.out.BookRepository;
 
 import java.util.List;
 
-public class ListarLivrosUseCase {
+public class ListarLivrosUseCase  implements ListarLivrosPortIn {
 
     private final BookRepository bookRepository;
 

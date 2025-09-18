@@ -1,13 +1,14 @@
 package com.franciscoabsl.catalog.application.usecases;
 
 import com.franciscoabsl.catalog.domain.Livro;
+import com.franciscoabsl.catalog.port.in.CadastrarLivroPortIn;
 import com.franciscoabsl.catalog.port.out.BookRepository;
 import com.franciscoabsl.catalog.port.out.LoggerPort;
 import com.franciscoabsl.catalog.port.out.NotificationService;
 
 import java.util.UUID;
 
-public class CadastrarLivroUseCase {
+public class CadastrarLivroUseCase implements CadastrarLivroPortIn {
 
     private final BookRepository bookRepository;
     private final NotificationService notificationService;
