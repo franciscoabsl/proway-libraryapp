@@ -8,6 +8,9 @@ import com.franciscoabsl.catalog.application.usecases.CadastrarLivroUseCase;
 import com.franciscoabsl.catalog.application.usecases.BuscarLivroPorIdUseCase;
 import com.franciscoabsl.catalog.application.usecases.ListarLivrosUseCase;
 
+import com.franciscoabsl.catalog.port.in.BuscarLivroPorIdPortIn;
+import com.franciscoabsl.catalog.port.in.CadastrarLivroPortIn;
+import com.franciscoabsl.catalog.port.in.ListarLivrosPortIn;
 import com.franciscoabsl.catalog.port.out.BookRepository;
 import com.franciscoabsl.catalog.port.out.LoggerPort;
 import com.franciscoabsl.catalog.port.out.NotificationService;
@@ -41,9 +44,9 @@ public class CatalogApplication {
         NotificationService notificationService = new HttpNotificationAdapter(notificationUrl);
 
         // UseCases
-        CadastrarLivroUseCase cadastrarLivro = new CadastrarLivroUseCase(bookRepository, notificationService, logger);
-        BuscarLivroPorIdUseCase buscarLivro = new BuscarLivroPorIdUseCase(bookRepository);
-        ListarLivrosUseCase listarLivros = new ListarLivrosUseCase(bookRepository);
+        CadastrarLivroPortIn cadastrarLivro = new CadastrarLivroUseCase(bookRepository, notificationService, logger);
+        BuscarLivroPorIdPortIn buscarLivro = new BuscarLivroPorIdUseCase(bookRepository);
+        ListarLivrosPortIn listarLivros = new ListarLivrosUseCase(bookRepository);
 
         // CLI
         CatalogCLI cli = new CatalogCLI(cadastrarLivro, buscarLivro, listarLivros);
